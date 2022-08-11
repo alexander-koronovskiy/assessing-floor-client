@@ -16,5 +16,5 @@ class Resource(abc.ABC):
 
 class HomeResource(Resource):
     @staticmethod
-    def on_get(_req, resp):
+    async def on_get(_req, resp):
         resp.context.result = 'Welcome to ML-service!'

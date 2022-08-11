@@ -16,10 +16,10 @@ class Middleware(abc.ABC):
     instance requiring them to have __self__ attribute.
     """
 
-    def process_request(self, _req, _resp):
+    async def process_request(self, _req, _resp):
         return
 
-    def process_response(self, _req, _resp, _resource, _req_succeeded):
+    async def process_response(self, _req, _resp, _resource, _req_succeeded):
         return
 
 
@@ -30,7 +30,7 @@ class RequireContentTypeMiddleware(Middleware):
     Throws an exception if receives a wrong content-type
     """
 
-    def process_request(self, req, _resp):
+    async def process_request(self, req, _resp):
         if not req.client_accepts_json:
             raise falcon.HTTPNotAcceptable(
                 description='This API only supports responses encoded as JSON.')
@@ -58,7 +58,7 @@ class ResponseMarshalMiddleware(Middleware):
     Marshals response body
     """
 
-    def process_response(self, _req, resp, _resource, req_succeeded):
+    async def process_response(self, _req, resp, _resource, req_succeeded):
         resp.set_header('Content-Type', 'application/json')
 
         # Forming a comprehensive response body:
@@ -85,5 +85,5 @@ class NetVersionMiddleware(Middleware):
     Adds neural network weight version in response header
     """
 
-    def process_response(self, _req, resp, _resource, _req_succeeded):
+    async def process_response(self, _req, resp, _resource, _req_succeeded):
         resp.set_header('X-Net-Version', __version__)

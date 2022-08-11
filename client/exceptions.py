@@ -51,7 +51,7 @@ class ReadContentError(ServerError):
     422. Invalid form data params
     """
 
-    def handle(_req, _resp, ex, _params):
+    async def handle(_req, _resp, ex, _params):
         ex_msg = str(ex)
         logger.error('Invalid form data params: %s', ex_msg, exc_info=True)
         raise falcon.HTTPUnprocessableEntity(
@@ -64,7 +64,7 @@ class ContentHandlerError(ServerError):
     503. MaskRCNN Error during handling content
     """
 
-    def handle(_req, _resp, ex, _params):
+    async def handle(_req, _resp, ex, _params):
         ex_msg = str(ex)
         logger.error('MaskRCNN Error during handling floor plane: %s', ex_msg, exc_info=True)
         raise falcon.HTTPServiceUnavailable(

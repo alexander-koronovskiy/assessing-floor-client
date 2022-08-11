@@ -1,31 +1,32 @@
 import os
 
-import falcon
 import uvloop
 import uvicorn
+import falcon.asgi
 
-from client import resource, middleware, exceptions, ConfigProvider
+import client
+from client import resource, middleware, exceptions
 
 
-_DEFAULT_CONFIG_PATH = 'config.gpu.yml'
+_DEFAULT_CONFIG_PATH = 'config.yml'
 
 
 def get_config():
     """
     Config reader
     """
+
     config_path = os.environ.get('ASGI_CONFIG_PATH') or _DEFAULT_CONFIG_PATH
-    return ConfigProvider.from_yaml(config_path)
+    return client.ConfigProvider.from_yaml(config_path)
 
 
 def create_app():
     """
     Application factory
     """
-    # Initialize services and providers here
     config = get_config()
-     # The app instance is a callable
-    app = falcon.App(
+
+    app = falcon.asgi.App(
         cors_enable=True,
         middleware=[
             middleware.RequireContentTypeMiddleware(),
@@ -33,6 +34,7 @@ def create_app():
             middleware.NetVersionMiddleware(),
         ]
     )
+
     # Initialize resources here
     home_resource = resource.HomeResource(config)
 
