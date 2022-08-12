@@ -37,9 +37,11 @@ def create_app():
 
     # Initialize resources here
     home_resource = resource.HomeResource(config)
+    sending_resource = resource.SendImageResource(config)
 
     # Initialize routes here
     app.add_route('/', home_resource)
+    app.add_route('/image', sending_resource)
 
     # Initialize handlers here
     app.set_error_serializer(exceptions.serializer)
