@@ -24,5 +24,5 @@ class SendImageResource(Resource):
     @staticmethod
     async def on_get(_req, resp):
         resp.content_type = 'text/html'
-        with open('index.html', 'r') as f:
+        with open('templates/index.html', 'r') as f:
             resp.body = f.read()
