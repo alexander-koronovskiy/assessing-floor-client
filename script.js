@@ -41,19 +41,19 @@ $(document).ready(function(){
 		let maxFileSize = 5242880;
 		let Data = new FormData();
 		$(files).each(function(index, file) {
-			if ((file.size <= maxFileSize) && ((file.type == 'image/jpg') || (file.type == 'image/jpeg'))) {
-				Data.append('images[]', file);
+			if ((file.type == 'image/jpg') || (file.type == 'image/jpeg')) {
+				Data.append('image', file);
 			};
 		});
 
 		$.ajax({
-			url: dropZone.attr('action'),
+			url: 'http://127.0.0.1:8000/image',
 			type: dropZone.attr('method'),
 			data: Data,
 			contentType: false,
 			processData: false,
 			success: function(data) {
-				alert ('Файлы были успешно загружены!');
+				alert ('file was handled');
 			}
 		});
 	}
