@@ -41,7 +41,7 @@ $(document).ready(function(){
 		let maxFileSize = 5242880;
 		let Data = new FormData();
 		$(files).each(function(index, file) {
-			if ((file.size <= maxFileSize) && ((file.type == 'image/png') || (file.type == 'image/jpeg'))) {
+			if ((file.size <= maxFileSize) && ((file.type == 'image/jpg') || (file.type == 'image/jpeg'))) {
 				Data.append('images[]', file);
 			};
 		});
@@ -57,4 +57,5 @@ $(document).ready(function(){
 			}
 		});
 	}
+
 })
