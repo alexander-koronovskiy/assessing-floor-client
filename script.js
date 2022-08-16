@@ -1,13 +1,11 @@
 $(document).ready(function(){
 	var dropZone = $('#upload-container');
-
 	$('#file-input').focus(function() {
 		$('label').addClass('focus');
 	})
 	.focusout(function() {
 		$('label').removeClass('focus');
 	});
-
 
 	dropZone.on('drag dragstart dragend dragover dragenter dragleave drop', function(){
 		return false;
@@ -36,7 +34,6 @@ $(document).ready(function(){
 		sendFiles(files);
 	});
 
-
 	function sendFiles(files) {
 		let maxFileSize = 5242880;
 		let Data = new FormData();
@@ -45,6 +42,8 @@ $(document).ready(function(){
 				Data.append('image', file);
 			};
 		});
+
+        // крутилка здесь
 
 		$.ajax({
 			url: 'http://127.0.0.1:8000/image',
