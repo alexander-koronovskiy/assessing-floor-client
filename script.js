@@ -43,7 +43,7 @@ $(document).ready(function(){
 			};
 		});
 
-        // крутилка здесь
+        // processing server action
 
 		$.ajax({
 			url: 'http://127.0.0.1:8000/image',
@@ -52,7 +52,8 @@ $(document).ready(function(){
 			contentType: false,
 			processData: false,
 			success: function(data) {
-				alert ('file was handled');
+			    // post-processing server action
+				alert (JSON.stringify(data));
 			}
 		});
 	}
