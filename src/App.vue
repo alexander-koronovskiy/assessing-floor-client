@@ -1,7 +1,7 @@
 <template>
   <Draw />
-  <!-- <Connection />
-  <Popup /> -->
+  <!-- <Connection /> -->
+  <!-- <Popup /> -->
 </template>
 
 <script>
