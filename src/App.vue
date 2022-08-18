@@ -4,6 +4,9 @@
 
 <script>
 import Draw from './components/Draw.vue';
+// Connection
+// Draw
+// Popup
 
 export default {
   name: 'App',
