@@ -6,8 +6,7 @@
         :src="data.plan_image.image_thumb"
         :width="data.plan_image.width"
         :height="data.plan_image.height"
-        class="container__image"
-      />
+        class="container__image"/>
       <div class="container__hint">
         <svg :viewBox="`0 0 ${data.plan_image.width} ${data.plan_image.height}`" xmlns="http://www.w3.org/2000/svg">
           <template :key="flat.id" v-for="flat in data.flats">
@@ -37,6 +36,7 @@ export default {
       .then(({ data }) => {
         this.data = data
       })
+    
 
   }
 };
