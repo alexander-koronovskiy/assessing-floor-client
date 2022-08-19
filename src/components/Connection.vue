@@ -10,14 +10,12 @@
 </template>
 
 <script>
-import JQuery from 'jquery'
-let $ = JQuery
-$(document).ready(function() {
-    var dropZone = $('#upload-container');
-    $('#file-input').focus(function() {
-        $('label').addClass('focus');
+document.addEventListener('DOMContentLoaded', function(){ 
+    var dropZone = document.getElementById('#upload-container');
+    document.getElementById('#file-input').focus(function() {
+        document.getElementById('label').addClass('focus');
     }).focusout(function() {
-        $('label').removeClass('focus');
+        document.getElementById('label').removeClass('focus');
     });
     dropZone.on('drag dragstart dragend dragover dragenter dragleave drop', function() {
         return false;
@@ -37,31 +35,31 @@ $(document).ready(function() {
         let files = e.originalEvent.dataTransfer.files;
         sendFiles(files);
     });
-    $('#file-input').change(function() {
+    document.getElementById('#file-input').change(function() {
         let files = this.files;
         sendFiles(files);
     });
 
-    function sendFiles(files) {
-        let maxFileSize = 5242880;
-        let Data = new FormData();
-        $(files).each(function(index, file) {
-            if ((file.type == 'image/jpg') || (file.type == 'image/jpeg')) {
-                Data.append('image', file);
-            };
-        });
-        $.ajax({
-            url: 'http://127.0.0.1:8000/image',
-            type: dropZone.attr('method'),
-            data: Data,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-                // pop up window with result here
-                alert(JSON.stringify(data));
-            }
-        });
-    }
+    // function sendFiles(files) {
+    //     let maxFileSize = 5242880;
+    //     let Data = new FormData();
+    //     $(files).each(function(index, file) {
+    //         if ((file.type == 'image/jpg') || (file.type == 'image/jpeg')) {
+    //             Data.append('image', file);
+    //         };
+    //     });
+    //     $.ajax({
+    //         url: 'http://127.0.0.1:8000/image',
+    //         type: dropZone.attr('method'),
+    //         data: Data,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function(data) {
+    //             // pop up window with result here
+    //             alert(JSON.stringify(data));
+    //         }
+    //     });
+    // }
 })
 </script>
 
