@@ -1,18 +1,21 @@
 <template>
 <div id="app">
   <input type="file" @change="onFileChange" />
-
-  <div id="preview">
-    <img v-if="url" :src="url" />
+  <div class="container">
+    <img 
+      v-if="url"
+      :src="data.plan_image.image_thumb"
+      :width="data.plan_image.width"
+      :height="data.plan_image.height"
+      class="container__image"
+    />
   </div>
-
-
 </div>
 </template>
 
 <script>
 export default {
-  data() {
+data() {
   return {
     url: null,
   }
@@ -22,6 +25,13 @@ methods: {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
   }
+},
+mounted () {
+  fetch('https://api.gkosnova.tech/public/api/v1/building-objects/2/floor/1/1/-1?fullList=1')
+  .then(res => res.json())
+  .then(({ data }) => {
+    this.data = data
+  })
 }
 };
 </script>
