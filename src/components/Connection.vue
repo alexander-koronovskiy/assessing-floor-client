@@ -22,7 +22,7 @@ export default {
       this.url = URL.createObjectURL(file);
       let Data = new FormData();
       Data.append('image', file);
-
+      
       fetch('http://127.0.0.1:8000/image', {
         method: "POST",
         body: Data
@@ -40,4 +40,19 @@ export default {
 </script>
 
 <style>
+.container {
+  position: relative;
+}
+.container__hint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.container__image {
+  width: 100%;
+  object-fit: contain;
+  height: auto;
+}
 </style>
