@@ -1,6 +1,6 @@
 <template>
     <h2>Image Modal</h2>
-    <img id="myImg" src="../static/imgs/correct_plan.jpg" alt="Plan" style="width:100%;max-width:300px">
+    <img id="myImg" src="assets/correct_plan.jpg" alt="Plan" style="width:100%;max-width:300px">
     <div id="myModal" class="modal">
         <span class="close">×</span>
         <img class="modal-content" id="img01">

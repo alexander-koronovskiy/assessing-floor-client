@@ -1,6 +1,6 @@
 <template>
     <form id="upload-container" method="POST" action="/image">
-        <img id="upload-image" src="../static/imgs/upload.svg">
+        <img id="upload-image" src="assets/upload.svg">
         <div>
             <input id="file-input" type="file" name="file" multiple>
             <label for="file-input">Выберите файл</label>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import JQuery from 'jquery'
+let $ = JQuery
 $(document).ready(function() {
     var dropZone = $('#upload-container');
     $('#file-input').focus(function() {
