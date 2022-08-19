@@ -1,6 +1,5 @@
 <template>
   <Connection />
-  <!-- <Draw /> -->
   <!-- <Popup /> -->
 </template>
 
@@ -13,7 +12,6 @@ export default {
   name: 'App',
   components: {
     Connection,
-    // Draw,
     // Popup
 }
 }

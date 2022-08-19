@@ -15,6 +15,7 @@
         </svg>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -36,13 +37,10 @@ export default {
       .then(({ data }) => {
         this.data = data
       })
-    
-
   }
 };
 </script>
 
-<!-- Use preprocessors via the lang attribute! e.g. <style lang="scss"> -->
 <style>
   .container {
     position: relative;
