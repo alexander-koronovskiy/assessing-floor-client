@@ -1,19 +1,19 @@
 <template>
-  <!-- <Draw /> -->
   <Connection />
+  <!-- <Draw /> -->
   <!-- <Popup /> -->
 </template>
 
 <script>
-// import Draw from './components/Draw.vue';
 import Connection from './components/Connection.vue';
+// import Draw from './components/Draw.vue';
 // import Popup from './components/Popup.vue';
 
 export default {
   name: 'App',
   components: {
-    // Draw,
     Connection,
+    // Draw,
     // Popup
 }
 }
