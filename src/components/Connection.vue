@@ -7,10 +7,10 @@
   </div>
 
   <div class="container__hint">
-    <svg :viewBox="`0 0 100 100`" xmlns="http://www.w3.org/2000/svg">
-      <!-- <template :key="flat.id" v-for="flat in data.flats">
-        <polygon :points="flat.area_points" fill="red" />
-      </template> -->
+    <svg :viewBox="`0 0 ${imageWidth} ${imageHeight}`" xmlns="http://www.w3.org/2000/svg">
+      <template :key="id" v-for="(flat, id) in flats">
+        <polygon :points="flat" fill="red" />
+      </template>
     </svg>
   </div>
 </div>
@@ -21,15 +21,24 @@ export default {
   data() {
     return {
       url: null,
+      imageWidth: 100,
+      imageHeight: 100,
+      flats: [],
     }
   },
   methods: {
     onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
+      const prefetchImage = new Image();
+      prefetchImage.src = this.url;
+      prefetchImage.onload = () => {
+        this.imageWidth = prefetchImage.width;
+        this.imageHeight = prefetchImage.height;
+      }
+      
       let Data = new FormData();
       Data.append('image', file);
-      
       fetch('http://127.0.0.1:8000/image', {
         method: "POST",
         body: Data
@@ -39,7 +48,11 @@ export default {
         }
         return response.json();
       }).then(function(data) {
-        alert(JSON.stringify(data))
+        this.flats = data.data.map(flat => {
+          return String.valueOf(flat); // TODO: convert flat to string 
+        })
+
+        alert(this.flats)
       }).catch(() => alert('ошибка'));
     }
   }

@@ -1,18 +1,14 @@
 <template>
   <Connection />
-  <!-- <Popup /> -->
 </template>
 
 <script>
-import Connection from './components/Connection.vue';
-// import Draw from './components/Draw.vue';
-// import Popup from './components/Popup.vue';
+import Connection from './components/Connection.vue'
 
 export default {
   name: 'App',
   components: {
-    Connection,
-    // Popup
+    Connection
 }
 }
 </script>
