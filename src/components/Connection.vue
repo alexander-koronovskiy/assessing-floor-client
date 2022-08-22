@@ -48,11 +48,13 @@ export default {
         }
         return response.json();
       }).then(function(data) {
-        this.flats = data.data.map(flat => {
-          return String.valueOf(flat); // TODO: convert flat to string 
-        })
+        data.data.forEach(elem => {
+          alert(elem.join(' '))
+        });
 
-        alert(this.flats)
+        // this.flats = data.data.map(flat => {
+        //   return flat.join(' ');
+        // })
       }).catch(() => alert('ошибка'));
     }
   }
