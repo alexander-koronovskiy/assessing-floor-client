@@ -1,12 +1,8 @@
 <template>
-<div id="app">
+<div class="container">
   <input type="file" @change="onFileChange" />
-
-  <div id="container">
-    <img v-if="url" :src="url" class="container__image"/>
-  </div>
-
-  <div class="container__hint">
+  <img v-if="url" :src="url" :width="imageWidth" :height="imageHeight" class="container__image"/>
+  <div v-show="flats.length" class="container__hint">
     <svg :viewBox="`0 0 ${imageWidth} ${imageHeight}`" xmlns="http://www.w3.org/2000/svg">
       <template :key="id" v-for="(flat, id) in flats">
         <polygon :points="flat" fill="red" />
@@ -21,8 +17,8 @@ export default {
   data() {
     return {
       url: null,
-      imageWidth: 100,
-      imageHeight: 100,
+      imageWidth: 0,
+      imageHeight: 0,
       flats: [],
     }
   },
@@ -47,15 +43,11 @@ export default {
           return Promise.reject();
         }
         return response.json();
-      }).then(function(data) {
-        data.data.forEach(elem => {
-          alert(elem.join(' '))
+      }).then(data => {
+        this.flats = data.data.map(flat => {
+          return flat.join(' ');
         });
-
-        // this.flats = data.data.map(flat => {
-        //   return flat.join(' ');
-        // })
-      }).catch(() => alert('ошибка'));
+      })
     }
   }
 };
@@ -71,7 +63,6 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  display: none;
 }
 .container__image {
   width: 100%;
