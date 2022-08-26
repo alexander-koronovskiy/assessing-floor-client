@@ -1,6 +1,9 @@
 # assessing-floor-client
 
-Клиент для автоматической разметки помещений на плане этажа
+# Запуск клиента
+```
+npm run serve
+```
 
 # Запуск тестового сервера
 
@@ -10,7 +13,6 @@
 cd yksinner/assessing-floor && 
 python3 -m venv venv && 
 source venv/bin/activate &&
-pip install -r requirements.txt &&
 python3 main.py
 ```
 

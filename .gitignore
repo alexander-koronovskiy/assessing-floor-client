@@ -1,27 +1,23 @@
-# ENV
-venv
-cache
-config.yml
+.DS_Store
+node_modules
+/dist
 
-# Python
-.pytest_cache
-.cov*
-cov*.xml
-htmlcov
-__pycache__
 
-# Editors
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
 .idea
 .vscode
-.devcontainer
-.DS_Store
-tags
-*.sw
-*.swo
-*.swp
-*.vim
-*.code-workspace
-
-# Assets
-*.jpeg
-*.png
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
