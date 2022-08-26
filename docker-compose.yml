@@ -1,0 +1,25 @@
+version: '3.9'
+
+networks:
+  app_default:
+    external: true
+  app-network:
+    name: yks_default
+    driver: bridge
+
+
+services:
+
+  yksoft:
+    image: ${REGISTRY}${IMAGENAME}/${GIT_BRANCH}:latest
+    restart: always
+    networks:
+      - app_default
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.assessing-floor.entrypoints=websecure"
+      - "traefik.http.routers.assessing-floor.rule=Host(`assessing-floor.ykdev.ru`)"
+      - "traefik.http.routers.assessing-floor.tls.certresolver=lets-encrypt"
+      - "traefik.http.services.assessing-floor.loadbalancer.server.port=8080"
+      - "traefik.docker.network=app_default"
