@@ -28,6 +28,7 @@ export default {
   },
   methods: {
     onFileChange(e) {
+      this.flats = [];
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
       const prefetchImage = new Image();
@@ -37,6 +38,7 @@ export default {
         this.imageHeight = prefetchImage.height;
       }
       this.loading = true;
+
       let Data = new FormData();
       Data.append('image', file);
       fetch('http://127.0.0.1:8000/image', {
