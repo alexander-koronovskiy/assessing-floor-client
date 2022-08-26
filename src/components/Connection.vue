@@ -41,7 +41,7 @@ export default {
 
       let Data = new FormData();
       Data.append('image', file);
-      fetch('http://127.0.0.1:8000/image', {
+      fetch(`${process.env.VUE_APP_API}/image`, {
         method: "POST",
         body: Data
       }).then(response => {
