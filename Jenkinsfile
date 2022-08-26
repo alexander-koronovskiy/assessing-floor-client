@@ -11,7 +11,7 @@ pipeline {
 
   parameters {
     string(name: 'CD_PORT_PRODUCTION', defaultValue: '11000', description: 'Which port to choose for PRODUCTION?')
-    string(name: 'PRODUCTION_BRANCH', defaultValue: 'master', description: 'What branch in PRODUCTION?')
+    string(name: 'PRODUCTION_BRANCH', defaultValue: 'main', description: 'What branch in PRODUCTION?')
     string(name: 'AGENT_LABEL', defaultValue: 'yks-monitoring', description: 'On which server?')
   }
 
