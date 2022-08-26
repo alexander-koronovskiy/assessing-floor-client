@@ -68,5 +68,6 @@ export default {
   width: 100%;
   object-fit: contain;
   height: auto;
+  margin-top: -1.5%;
 }
 </style>
