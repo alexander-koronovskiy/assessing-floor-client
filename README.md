@@ -5,19 +5,12 @@
 npm run serve
 ```
 
-# Запуск тестового сервера
+## Local docker test
 
-## Инициализация сервера из консоли:
-
-```bash
-cd yksinner/assessing-floor && 
-python3 -m venv venv && 
-source venv/bin/activate &&
-python3 main.py
+```
+docker build --build-arg ENV=production --tag assessing-floor-client:latest --file ./Dockerfile .
 ```
 
-## Перезапуск сервера из корневой папки:
-
-```bash
-python3 main.py
+```
+docker run -d -p 8080:8080 --restart=always --name "assessing-floor-client" assessing-floor-client:latest
 ```
