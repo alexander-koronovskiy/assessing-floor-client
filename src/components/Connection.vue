@@ -5,7 +5,7 @@
   <div v-show="flats.length" class="container__hint">
     <svg :viewBox="`0 0 ${imageWidth} ${imageHeight}`" xmlns="http://www.w3.org/2000/svg">
       <template :key="id" v-for="(flat, id) in flats">
-        <polygon :points="flat" fill="red" />
+        <polygon :points="flat" fill="green" fill-opacity="0.4" />
       </template>
     </svg>
   </div>
