@@ -4,7 +4,7 @@ pipeline {
 
   environment {
     CI = 'true'
-    IMAGENAME = '/yks/yks-site-dark'
+    IMAGENAME = '/yks/yks-inner/assessing-floor-client'
     REGISTRY = 'registry.gitlab.com'
     registryCredential = 'gitlab-user'
   }
